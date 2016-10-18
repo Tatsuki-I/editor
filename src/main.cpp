@@ -7,31 +7,43 @@
 
 int main(int argc, char** argv) {
 	std::string filename = argv[1];
-	std::string title;
+	std::string spacebar;
 	std::string number;
 	int x, y, w, h;
 	int key;
-	y = 0;
-
+	
+	//initialise terminal
 	initscr();
 	
+	//set colors
 	start_color();
 	init_pair(1, COLOR_BLACK, COLOR_WHITE);
 	init_pair(2, COLOR_YELLOW, COLOR_BLUE);
-
+	
+	//get window size
 	getmaxyx(stdscr, h, w);
-	for(int i = 0; i < (w - filename.length()); i++){
-		title.insert(0, " ");
-	}
-	title.insert((title.length() / 2), filename);
 
+	//set x in the center
+	x = (w - filename.length()) / 2;
+	
+	//set y
+	y = 0;
+
+	//male spacebar
+	for(int i = 0; i < w; i++){
+		spacebar.insert(0, " ");
+	}
+
+	//display titlebar
 	attrset(COLOR_PAIR(1));
 	attron(A_BOLD);
-	mvprintw(y, 0, title.c_str());
+	mvprintw(y, 0, spacebar.c_str());
+	mvprintw(y, x, filename.c_str());
 	attrset(0);
 	attroff(A_BOLD);
 	y++;
 		
+	//display line number
 	attrset(COLOR_PAIR(2));
 	attron(A_BOLD);
 	for(int i = 0; i < h - 2; i++){
@@ -47,9 +59,9 @@ int main(int argc, char** argv) {
 	attrset(0);
 	attroff(A_BOLD);
 
+	//open file
 	std::ifstream readFile;
 	readFile.open(filename.c_str(), std::ios::in);
-
 	std::string readLineBuffer;
 	y = 1;
 	while(!readFile.eof()) {
@@ -57,19 +69,23 @@ int main(int argc, char** argv) {
 		mvprintw(y, 4, readLineBuffer.c_str());
 		y++;
 	}
-
+	
+	//display tool bar
 	attrset(COLOR_PAIR(1));
 	attron(A_BOLD);
-    mvprintw((h - 1), (w - filename.length()), "(%2d, %2d)", x, y);
+	mvprintw((h - 1), 0, spacebar.c_str());
+    mvprintw((h - 1), (w - 10), "%2d,%1d", y, x - 4);
 	attrset(0);
 	attroff(A_BOLD);
 
-
+	//make enable cursor keys
     noecho();
-	move(1, 4);
 	keypad(stdscr, TRUE);
-    for (;;) {
+	move(1, 4);
+    while(1) {
         key = getch();
+		if (key == 'q')
+			break;
         switch (key) {
    		 	case KEY_LEFT :
 				if(x > 4)
@@ -91,7 +107,8 @@ int main(int argc, char** argv) {
 
 		attrset(COLOR_PAIR(1));
 		attron(A_BOLD);
-        mvprintw((h - 1), (w - filename.length()), "(%2d, %2d)", x, y);
+		mvprintw((h - 1), 0, spacebar.c_str());
+        mvprintw((h - 1), (w - 10), "%2d,%1d", y, x - 4);
 		attrset(0);
 		attroff(A_BOLD);
 
@@ -99,7 +116,6 @@ int main(int argc, char** argv) {
         refresh();
     }
 
-	getch();
 
 	endwin();
 	return 0;
