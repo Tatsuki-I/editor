@@ -1,4 +1,4 @@
 language: cpp
 script:
   - clang++ --version
-  - clang++ -Wall src/main.cpp -lncurses -std=c++1y && ./a.out
+  - clang++ -Wall src/main.cpp -lncurses -std=c++1y && ./a.out src/text.txt
