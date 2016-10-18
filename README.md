@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Tatsuki-I/editor.svg?branch=master)](https://travis-ci.org/Tatsuki-I/editor)
+
 Editor  
 ====
 
