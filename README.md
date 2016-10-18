@@ -1,4 +1,7 @@
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)][license]
 [![Build Status](https://travis-ci.org/Tatsuki-I/editor.svg?branch=master)](https://travis-ci.org/Tatsuki-I/editor)
+
+[license]: /LICENSE
 
 Editor  
 ====
