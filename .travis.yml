@@ -1,0 +1,4 @@
+language: cpp
+script:
+  - clang++ --version
+  - clang++ -Wall scr/main.cpp -lncurses -std=c++1y && ./a.out
