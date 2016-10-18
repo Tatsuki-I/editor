@@ -1,3 +1,14 @@
+/*
+ * #Editor
+ * Author Tatsuki-I
+ *
+ * ##about
+ * This is (will be) a Text Editor.
+ * It's my practice about C++.
+ *
+ * ##compile option
+ * ` clang++ main.cpp -lncurses -std=c++1y `
+ */
 #include <iostream>
 #include <string>
 #include <ncurses.h>
