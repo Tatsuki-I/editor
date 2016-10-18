@@ -11,6 +11,8 @@ It's my practice of C++.
 
 ## Demo
 
+![demo](https://github.com/Tatsuki-I/editor/blob/master/img/editordemo.png "editorsample.png")
+
 ## Usage
 
 Please wait...
