@@ -96,7 +96,8 @@ int main(int argc, char** argv) {
     while(1) {
         key = getch();
 		if (key == 'q')
-			break;
+			return 0;
+//			break;
         switch (key) {
    		 	case KEY_LEFT :
 				if(x > 4)
