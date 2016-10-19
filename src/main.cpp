@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 	std::string filename = argv[1];
 	std::string spacebar;
 	std::string number;
-	int x, y, w, h;
+	int x, y, width, height;
 	int key;
 	
 	//initialise terminal
@@ -32,16 +32,16 @@ int main(int argc, char** argv) {
 	init_pair(2, COLOR_YELLOW, COLOR_BLUE);
 	
 	//get window size
-	getmaxyx(stdscr, h, w);
+	getmaxyx(stdscr, height, width);
 
 	//set x in the center
-	x = (w - filename.length()) / 2;
+	x = (width - filename.length()) / 2;
 	
 	//set y
 	y = 0;
 
 	//male spacebar
-	for(int i = 0; i < w; i++){
+	for(int i = 0; i < width; i++){
 		spacebar.insert(0, " ");
 	}
 
@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
 	//display line number
 	attrset(COLOR_PAIR(2));
 	attron(A_BOLD);
-	for(int i = 0; i < h - 2; i++){
+	for(int i = 0; i < height - 2; i++){
 		number = std::to_string(i + 1);
 		if((i + 1) < 10){
 			number.insert(0, " ");
@@ -84,8 +84,8 @@ int main(int argc, char** argv) {
 	//display tool bar
 	attrset(COLOR_PAIR(1));
 	attron(A_BOLD);
-	mvprintw((h - 1), 0, spacebar.c_str());
-    mvprintw((h - 1), (w - 10), "%2d,%1d", y, x - 4);
+	mvprintw((height - 1), 0, spacebar.c_str());
+    mvprintw((height - 1), (width - 10), "%2d,%1d", y, x - 4);
 	attrset(0);
 	attroff(A_BOLD);
 
@@ -108,19 +108,19 @@ int main(int argc, char** argv) {
 					y--;
 				break;
    		 	case KEY_RIGHT :
-				if(x < (w - 2))
+				if(x < (width - 2))
 					x++;
 				break;
 			case KEY_DOWN :
-				if(y < (h - 2))
+				if(y < (height - 2))
 					y++;
 				break;
        	}
 
 		attrset(COLOR_PAIR(1));
 		attron(A_BOLD);
-		mvprintw((h - 1), 0, spacebar.c_str());
-        mvprintw((h - 1), (w - 10), "%2d,%1d", y, x - 4);
+		mvprintw((height - 1), 0, spacebar.c_str());
+        mvprintw((height - 1), (width - 10), "%2d,%1d", y, x - 4);
 		attrset(0);
 		attroff(A_BOLD);
 
