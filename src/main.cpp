@@ -15,10 +15,11 @@
 
 #include <fstream>
 #include <sstream>
+//void setTitlebar(std::string filename);
+std::string setSpacebar(int width);
 
 int main(int argc, char** argv) {
 	std::string filename = argv[1];
-	std::string spacebar;
 	std::string number;
 	int x, y, width, height;
 	int key;
@@ -40,10 +41,7 @@ int main(int argc, char** argv) {
 	//set y
 	y = 0;
 
-	//male spacebar
-	for(int i = 0; i < width; i++){
-		spacebar.insert(0, " ");
-	}
+	std::string spacebar = setSpacebar(width);
 
 	//display titlebar
 	attrset(COLOR_PAIR(1));
@@ -132,3 +130,27 @@ int main(int argc, char** argv) {
 	endwin();
 	return 0;
 }
+
+
+std::string setSpacebar(int width){
+	std::string spacebar;
+
+	for(int i = 0; i < width; i++){
+		spacebar.insert(0, " ");
+	}
+
+	return spacebar;
+}
+
+/*
+void setTitlebar(std::string filename, chtype attribute){
+	int height, width;
+	getmaxyx(stdscr, height, width);
+	attrset(attribute);
+	attron(A_BOLD);
+	mvprintw(y, 0, spacebar.c_str());
+	mvprintw(y, x, filename.c_str());
+	attrset(0);
+	attroff(A_BOLD);
+}
+*/
