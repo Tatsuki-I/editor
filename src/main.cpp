@@ -9,12 +9,14 @@
  * ##compile option
  * ` clang++ main.cpp -lncurses -std=c++1y `
  */
+
 #include <iostream>
 #include <string>
 #include <ncurses.h>
 
 #include <fstream>
 #include <sstream>
+
 //void setTitlebar(std::string filename);
 std::string setSpacebar(int width);
 
